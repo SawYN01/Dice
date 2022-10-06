@@ -9,15 +9,25 @@ Die bob;
 void draw()
   {   
       int sum = 0;
+      boolean shift = true;
       background(0);
-      for(int y = 20; y < 830; y = y+90)
-      {
-          for(int x = 10; x < 850; x = x+90)
-          {
-          Die bob = new Die(x,y);
-          bob.show();
-          bob.roll();
-          sum = sum + bob.numOfDie;
+      for(int y = 20; y < 830; y = y+90) {
+         for(int x = 10; x < 850; x = x+90) {
+             if (shift == true) {
+                Die bob = new Die(x,y+20);
+                bob.show();
+                bob.roll();
+                sum = sum + bob.numOfDie;
+             } else {
+                Die bob = new Die(x,y);
+                bob.show();
+                bob.roll();
+                sum = sum + bob.numOfDie;
+              }  
+            if (shift == true)
+                shift = false; 
+             else
+                shift = true;
           }
       }
       fill(255);
